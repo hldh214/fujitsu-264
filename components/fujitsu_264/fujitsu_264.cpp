@@ -73,7 +73,7 @@ void Fujitsu264Climate::transmit_state() {
     } else if (mode == climate::CLIMATE_MODE_FAN_ONLY) {
       this->ac_.setMode(kFujitsuAc264ModeFan);
     } else {
-      ESP_LOGW(TAG, "Unsupported climate mode: %d", static_cast<int>(mode));
+      ESP_LOGW(TAG, "Unsupported climate mode: %d", mode);
       return;
     }
 
@@ -92,7 +92,7 @@ void Fujitsu264Climate::transmit_state() {
     } else if (fan_mode == climate::CLIMATE_FAN_QUIET) {
       this->ac_.setFanSpeed(kFujitsuAc264FanSpeedQuiet);
     } else {
-      ESP_LOGW(TAG, "Unsupported fan mode: %d", static_cast<int>(fan_mode));
+      ESP_LOGW(TAG, "Unsupported fan mode: %d", fan_mode);
       this->ac_.setFanSpeed(kFujitsuAc264FanSpeedAuto);
     }
 
