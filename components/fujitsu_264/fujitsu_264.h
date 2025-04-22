@@ -8,18 +8,22 @@
 namespace esphome {
 namespace fujitsu_264 {
 
+const uint16_t FUJITSU_IR_LED = 32;  // FIXME: Can we make this configurable?
+
 class Fujitsu264Climate : public climate_ir::ClimateIR {
  public:
-  Fujitsu264Climate() : climate_ir::ClimateIR(kFujitsuAc264MinTemp, kFujitsuAc264MaxTemp, 1.0) {}
-  
+  Fujitsu264Climate()
+  : climate_ir::ClimateIR(kFujitsuAc264MinTemp, kFujitsuAc264MaxTemp, 1.0f),
+  ac (FUJITSU_IR_LED) {}
+
   void setup() override;
   climate::ClimateTraits traits() override;
-  
+
  protected:
   void transmit_state() override;
-                
+
  private:
-  IRFujitsuAC264 ac_{0};
+  IRFujitsuAC264 ac;
 };
 
 }  // namespace fujitsu_264
