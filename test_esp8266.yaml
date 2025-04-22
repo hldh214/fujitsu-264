@@ -8,10 +8,6 @@ external_components:
 esp8266:
   board: d1_mini
 
-remote_transmitter:
-  pin: GPIO4
-  carrier_duty_percent: 50%
-
 climate:
   - platform: fujitsu_264
     name: "Fujitsu AC"

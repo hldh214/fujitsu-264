@@ -8,10 +8,6 @@ external_components:
 esp32:
   board: esp32dev
 
-remote_transmitter:
-  pin: GPIO4
-  carrier_duty_percent: 50%
-
 climate:
   - platform: fujitsu_264
     name: "Fujitsu AC"
