@@ -8,7 +8,11 @@ static const char *const TAG = "fujitsu_264";
   void Fujitsu264Climate::setup () {
     climate_ir::ClimateIR::setup ();
     ac_.begin ();
-    ac_.setMode (kFujitsuAc264ModeCool);
+    ac_.setMode(kFujitsuAc264ModeCool);
+    ac_.setFanSpeed(kFujitsuAc264FanSpeedAuto);
+    ac_.setSwing(true);
+    ac_.setTemp (25);
+    ac_.off();
   }
 
 void Fujitsu264Climate::transmit_state() {
@@ -17,15 +21,6 @@ void Fujitsu264Climate::transmit_state() {
     ac_.send ();
     return;
   }
-
-  ESP_LOGD(TAG, "Transmit state");
-  ESP_LOGD(TAG, "Mode: %d", this->mode);
-  ESP_LOGD(TAG, "Target temperature: %d", this->target_temperature);
-  ESP_LOGD(TAG, "Fan mode: %d", this->fan_mode.value());
-  ESP_LOGD(TAG, "Swing mode: %d", this->swing_mode);
-
-  ac_.on ();
-  ac_.setTemp (this->target_temperature);
 
   // Set mode
   switch (this->mode) {
@@ -86,6 +81,7 @@ void Fujitsu264Climate::transmit_state() {
       break;
   }
 
+  ac_.setTemp (this->target_temperature);
   ac_.send ();
 }
 
