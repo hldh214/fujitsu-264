@@ -10,11 +10,7 @@ Fujitsu264Climate = fujitsu_264_ns.class_(
     "Fujitsu264Climate", climate_ir.ClimateIR
 )
 
-CONFIG_SCHEMA = climate_ir.CLIMATE_IR_WITH_RECEIVER_SCHEMA.extend(
-    {
-        cv.GenerateID(): cv.declare_id(Fujitsu264Climate),
-    }
-)
+CONFIG_SCHEMA = climate_ir.climate_ir_with_receiver_schema(Fujitsu264Climate)
 
 
 async def to_code(config):
