@@ -93,7 +93,7 @@ namespace esphome {
             void send();
             void apply_state();
 
-            IRFujitsuAC ac_ = IRFujitsuAC(255); // pin is not used
+            IRFujitsuAC264 ac_ = IRFujitsuAC264(255); // pin is not used
         };
     }  // namespace fujitsu_264
 }  // namespace esphome
