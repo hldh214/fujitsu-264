@@ -1,4 +1,6 @@
+#define _IR_ENABLE_DEFAULT_ false
 #define SEND_FUJITSU_AC264 true
+#define DECODE_FUJITSU_AC264 false
 
 #include "fujitsu_264.h"
 #include "esphome.h"
