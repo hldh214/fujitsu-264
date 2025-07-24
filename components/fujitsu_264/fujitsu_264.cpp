@@ -58,25 +58,6 @@ namespace esphome
             {
                 this->ac_.setTemp(this->target_temperature);
 
-                switch (this->mode)
-                {
-                case climate::CLIMATE_MODE_HEAT_COOL:
-                    this->ac_.setMode(kFujitsuAc264ModeAuto);
-                    break;
-                case climate::CLIMATE_MODE_HEAT:
-                    this->ac_.setMode(kFujitsuAc264ModeHeat);
-                    break;
-                case climate::CLIMATE_MODE_COOL:
-                    this->ac_.setMode(kFujitsuAc264ModeCool);
-                    break;
-                case climate::CLIMATE_MODE_DRY:
-                    this->ac_.setMode(kFujitsuAc264ModeDry);
-                    break;
-                case climate::CLIMATE_MODE_FAN_ONLY:
-                    this->ac_.setMode(kFujitsuAc264ModeFan);
-                    break;
-                }
-
                 if (this->fan_mode.has_value())
                 {
                     switch (this->fan_mode.value())
@@ -115,7 +96,24 @@ namespace esphome
                     break;
                 }
 
-                this->ac_.on();
+                switch (this->mode)
+                {
+                case climate::CLIMATE_MODE_HEAT_COOL:
+                    this->ac_.setMode(kFujitsuAc264ModeAuto);
+                    break;
+                case climate::CLIMATE_MODE_HEAT:
+                    this->ac_.setMode(kFujitsuAc264ModeHeat);
+                    break;
+                case climate::CLIMATE_MODE_COOL:
+                    this->ac_.setMode(kFujitsuAc264ModeCool);
+                    break;
+                case climate::CLIMATE_MODE_DRY:
+                    this->ac_.setMode(kFujitsuAc264ModeDry);
+                    break;
+                case climate::CLIMATE_MODE_FAN_ONLY:
+                    this->ac_.setMode(kFujitsuAc264ModeFan);
+                    break;
+                }
             }
 
             ESP_LOGI(TAG, "%s", this->ac_.toString().c_str());
