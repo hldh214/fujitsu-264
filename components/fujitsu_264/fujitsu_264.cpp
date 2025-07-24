@@ -18,42 +18,15 @@ namespace esphome
 
         static const char *const TAG = "fujitsu_264.climate";
 
-        void Fujitsu264Climate::setup ()
+        void Fujitsu264Climate::setup()
         {
             climate_ir::ClimateIR::setup();
             this->apply_state();
         }
 
-        climate::ClimateTraits Fujitsu264Climate::traits()
-        {
-            auto traits = climate_ir::ClimateIR::traits();
-            return traits;
-        }
-
         void Fujitsu264Climate::transmit_state()
         {
             this->apply_state();
-            this->send();
-        }
-
-        void Fujitsu264Climate::step_horizontal()
-        {
-            if (this->traits().supports_swing_mode(climate::CLIMATE_SWING_HORIZONTAL))
-            {
-                this->ac_.stepHoriz();
-                ESP_LOGI(TAG, "%s", this->ac_.toString().c_str());
-                this->send();
-            }
-            else
-            {
-                ESP_LOGW(TAG, "Model does not support horizontal swing");
-            }
-        }
-
-        void Fujitsu264Climate::step_vertical()
-        {
-            this->ac_.stepVert();
-            ESP_LOGI(TAG, this->ac_.toString().c_str());
             this->send();
         }
 

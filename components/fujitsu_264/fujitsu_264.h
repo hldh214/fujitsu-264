@@ -76,15 +76,11 @@ namespace esphome {
         {
         public:
             Fujitsu264Climate()
-                : ClimateIR(kFujitsuAc264MinTemp, kFujitsuAc264MaxTemp, 0.5f, /* supports_dry */ true, /* supports_fan_only */ true,
+                : ClimateIR(kFujitsuAc264MinTemp, kFujitsuAc264MaxTemp, 1.0f, /* supports_dry */ true, /* supports_fan_only */ true,
                 {climate::CLIMATE_FAN_AUTO, climate::CLIMATE_FAN_LOW, climate::CLIMATE_FAN_MEDIUM,
                        climate::CLIMATE_FAN_HIGH, climate::CLIMATE_FAN_QUIET},
                       {climate::CLIMATE_SWING_OFF, climate::CLIMATE_SWING_VERTICAL, climate::CLIMATE_SWING_HORIZONTAL, climate::CLIMATE_SWING_BOTH}) {}
             void setup() override;
-            climate::ClimateTraits traits() override;
-
-            void step_horizontal();
-            void step_vertical();
 
         protected:
             void transmit_state() override;
