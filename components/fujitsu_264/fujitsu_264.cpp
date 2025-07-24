@@ -1,3 +1,5 @@
+#define SEND_FUJITSU_AC264 true
+
 #include "fujitsu_264.h"
 #include "esphome.h"
 #include "ir_Fujitsu.h"
